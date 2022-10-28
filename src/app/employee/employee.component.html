@@ -1,0 +1,7 @@
+<h4>Employee</h4>
+
+<h6>Details</h6>
+
+<div *ngFor="let item of details | keyvalue">
+  <strong>{{ item.key }} : </strong>{{ item.value }}
+</div>

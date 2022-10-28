@@ -1,0 +1,71 @@
+<h2>Human Resourses</h2>
+
+<h2><strong>Employees</strong></h2>
+<form #myfrm="ngForm" (ngSubmit)="addNewEmployee(myfrm.value)">
+  <div>
+    <div class="mb-3 xl:w-96">
+      <label for="ename">Employee ID</label>
+      <input type="text" name="ID" ngModel placeholder="Employee ID" />
+    </div>
+    <div class="mb-3 xl:w-96">
+      <label for="ename">Name</label>
+      <input type="text" name="Name" ngModel placeholder="Employee Name" />
+    </div>
+    <div class="mb-3 xl:w-96 flex">
+      <label for="ename">Designation</label>
+      <input type="text" name="Designation" ngModel placeholder="Designation" />
+    </div>
+    <div class="mb-3 xl:w-96 flex">
+      <label for="ename">Manager ID</label>
+      <input type="text" name="ManagerID" ngModel placeholder="Manager ID" />
+    </div>
+    <div class="mb-3 xl:w-96 flex">
+      <label for="ename">Email ID</label>
+      <input type="text" name="Email" ngModel placeholder="Email ID" />
+    </div>
+    <div class="mb-3 xl:w-96 flex">
+      <label for="ename">Password</label>
+      <input type="text" name="Password" ngModel placeholder="Password" />
+    </div>
+    <button type="submit">Add Employee</button>
+  </div>
+</form>
+<table>
+  <tr>
+    <th>ID</th>
+    <th>Name</th>
+    <th>Designation</th>
+    <th>ManagerID</th>
+    <th>Email</th>
+    <th>Password</th>
+    <th>delete</th>
+  </tr>
+  <tr *ngFor="let employee of employees">
+    <td>{{ employee.ID }}</td>
+    <td>{{ employee.Name }}</td>
+    <td>{{ employee.Designation }}</td>
+    <td>{{ employee.ManagerID }}</td>
+    <td>{{ employee.Email }}</td>
+    <td>{{ employee.Password }}</td>
+    <td><button (click)="deleteEmployee(employee)">Delete</button></td>
+  </tr>
+</table>
+<br />
+<h2><strong>Managers</strong></h2>
+<button>New Manager</button>
+<table>
+  <tr>
+    <th>ID</th>
+    <th>Name</th>
+    <th>Department</th>
+    <th>Email</th>
+    <th>Password</th>
+  </tr>
+  <tr *ngFor="let manager of managers">
+    <td>{{ manager.ID }}</td>
+    <td>{{ manager.Name }}</td>
+    <td>{{ manager.Department }}</td>
+    <td>{{ manager.Email }}</td>
+    <td>{{ manager.Password }}</td>
+  </tr>
+</table>

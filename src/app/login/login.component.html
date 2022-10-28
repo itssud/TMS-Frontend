@@ -1,0 +1,83 @@
+<div class="hero min-h-screen bg-base-200">
+  <div class="hero-content flex-col">
+    <div class="text-center">
+      <h1 class="text-5xl font-bold">Login now!</h1>
+      <p class="py-6">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque cum
+        tenetur voluptatibus
+      </p>
+    </div>
+
+    <form
+      class="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100"
+      #loginForm="ngForm"
+      (submit)="login(loginForm.value)"
+    >
+      <div class="card-body">
+        <div class="form-control">
+          <label class="label">
+            <span class="label-text">Email</span>
+          </label>
+          <input
+            type="text"
+            placeholder="email"
+            name="email"
+            #username="ngModel"
+            ngModel
+            class="input input-bordered"
+            required
+          />
+          <p
+            class="text-sm text-red-600 ml-5 mt-1"
+            *ngIf="username.errors?.['required'] && username.touched"
+          >
+            Invalid username
+          </p>
+        </div>
+
+        <div class="form-control">
+          <label class="label">
+            <span class="label-text">Password</span>
+          </label>
+          <input
+            type="text"
+            placeholder="password"
+            class="input input-bordered"
+            name="password"
+            ngModel
+            #password="ngModel"
+            placeholder="Password"
+            pattern="[0-9a-zA-Z]{7,}"
+            required
+          />
+          <p
+            class="text-sm text-red-600 ml-5 mt-1"
+            *ngIf="password.errors?.['required'] && password.touched"
+          >
+            Invalid password
+          </p>
+          <p
+            class="text-sm text-red-600 ml-5 mt-1"
+            *ngIf="password.errors?.['pattern'] && password.touched"
+          >
+            Minimum 7 characters are required
+          </p>
+          <label class="label">
+            <a href="#" class="label-text-alt link link-hover"
+              >Forgot password?</a
+            >
+          </label>
+        </div>
+        <div class="form-control mt-6">
+          <button
+            [disabled]="loginForm.form.invalid"
+            type="submit"
+            class="btn btn-primary"
+          >
+            Login
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
