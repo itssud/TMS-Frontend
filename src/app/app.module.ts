@@ -13,6 +13,9 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { HttpClientModule } from '@angular/common/http';
+import { HrEmployeeComponent } from './hr-employee/hr-employee.component';
+import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
+import { HrTrainingComponent } from './hr-training/hr-training.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +28,9 @@ import { HttpClientModule } from '@angular/common/http';
     HeaderComponent,
     FooterComponent,
     SidebarComponent,
+    HrEmployeeComponent,
+    PagenotfoundComponent,
+    HrTrainingComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
   providers: [],

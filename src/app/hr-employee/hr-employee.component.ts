@@ -2,12 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { HrdbservicesService } from '../hrdbservices.service';
 
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss'],
+  selector: 'app-hr-employee',
+  templateUrl: './hr-employee.component.html',
+  styleUrls: ['./hr-employee.component.scss'],
   providers: [HrdbservicesService],
 })
-export class HomeComponent implements OnInit {
+export class HrEmployeeComponent implements OnInit {
   employees: any;
   constructor(public ob: HrdbservicesService) {
     ob.GetAllEmployee().subscribe((res) => (this.employees = res));

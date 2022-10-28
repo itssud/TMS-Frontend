@@ -1,0 +1,148 @@
+<div class="overflow-x h-full">
+  <div class="w-full flex justify-between align-middle mt-16 mb-5">
+    <h5 class="text-lg font-bold">Training Details</h5>
+    <!-- <button class="btn btn-primary btn-xs mr-5">Add New</button> -->
+    <!-- The button to open modal -->
+    <label for="my-modal-3" class="btn btn-primary btn-xs mr-5 modal-button"
+      >Add New</label
+    >
+
+    <!-- Put this part before </body> tag -->
+    <input type="checkbox" id="my-modal-3" class="modal-toggle" />
+    <div class="modal">
+      <div class="modal-box relative">
+        <label
+          for="my-modal-3"
+          class="btn btn-sm btn-circle absolute right-2 top-2"
+          >✕</label
+        >
+        <h3 class="text-lg font-bold">New Training Details</h3>
+
+        <form
+          class="card flex-shrink-0 w-full max-w-sm bg-base-100"
+          #newTrainingFrm="ngForm"
+          (submit)="addTraining(newTrainingFrm.value)"
+        >
+          <div class="card-body">
+            <div class="form-control">
+              <label class="label">
+                <span class="label-text">Topic</span>
+              </label>
+              <input
+                type="text"
+                placeholder="topic"
+                name="topic"
+                #topic="ngModel"
+                ngModel
+                class="input input-bordered"
+                required
+              />
+              <p
+                class="text-sm text-red-600 ml-5 mt-1"
+                *ngIf="topic.errors?.['required'] && topic.touched"
+              >
+                Invalid Topic
+              </p>
+            </div>
+            <div class="form-control">
+              <label class="label">
+                <span class="label-text">Description</span>
+              </label>
+              <input
+                type="text"
+                placeholder="description"
+                name="description"
+                #description="ngModel"
+                ngModel
+                class="input input-bordered"
+                required
+              />
+              <p
+                class="text-sm text-red-600 ml-5 mt-1"
+                *ngIf="description.errors?.['required'] && description.touched"
+              >
+                Invalid Description
+              </p>
+            </div>
+
+            <div class="form-control">
+              <label class="label">
+                <span class="label-text">Start Date</span>
+              </label>
+              <input
+                type="date"
+                placeholder="startDate"
+                name="startDate"
+                #startDate="ngModel"
+                ngModel
+                class="input input-bordered"
+                required
+              />
+              <p
+                class="text-sm text-red-600 ml-5 mt-1"
+                *ngIf="startDate.errors?.['required'] && startDate.touched"
+              >
+                Invalid startDate
+              </p>
+            </div>
+
+            <div class="form-control">
+              <label class="label">
+                <span class="label-text">End Date</span>
+              </label>
+              <input
+                type="date"
+                placeholder="endDate"
+                class="input input-bordered"
+                name="endDate"
+                ngModel
+                #endDate="ngModel"
+                required
+              />
+              <p
+                class="text-sm text-red-600 ml-5 mt-1"
+                *ngIf="endDate.errors?.['required'] && endDate.touched"
+              >
+                Invalid endDate
+              </p>
+            </div>
+            <div class="form-control mt-6">
+              <button type="submit" class="btn btn-primary">Add</button>
+              <label for="my-modal-3" class="btn btn-danger">Close</label>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <table class="table w-250">
+    <!-- head -->
+    <thead>
+      <tr>
+        <th>Training Topic</th>
+        <th>description</th>
+        <th>Start Date</th>
+        <th>End Date</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- row 1 -->
+      <tr>
+        <td>
+          <div class="flex items-center space-x-3">
+            <div>
+              <div class="font-bold">name</div>
+              <div class="text-sm opacity-50">id</div>
+            </div>
+          </div>
+        </td>
+        <td>design</td>
+        <td>email</td>
+        <th>
+          <span class="badge badge-success p-2 badge-sm">working</span>
+        </th>
+      </tr>
+    </tbody>
+  </table>
+</div>

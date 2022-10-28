@@ -1,56 +1,31 @@
 import { Component, OnInit } from '@angular/core';
 import { IEmployeeDetails } from '../employee/employee.component';
-
-declare interface IManager {
-  ID: number;
-  Name: string;
-  Department: string;
-  Email: string;
-  Password: string;
-}
+import { HrdbservicesService } from '../hrdbservices.service';
 
 @Component({
   selector: 'app-hr',
   templateUrl: './hr.component.html',
   styleUrls: ['./hr.component.scss'],
+  providers: [HrdbservicesService],
 })
 export class HrComponent implements OnInit {
-  employees: IEmployeeDetails[] = [
-    {
-      ID: 2313,
-      Name: 'Keerti Raju',
-      Designation: '.Net Guru',
-      ManagerID: 23344,
-      Email: 'rajugaru@yti.com',
-      Password: 'aydgasghasjkdfjk',
-    },
-  ];
-
-  managers: IManager[] = [
-    {
-      ID: 2313,
-      Name: 'Keerti Raju',
-      Department: '.Net Guru',
-      Email: 'rajugaru@yti.com',
-      Password: 'aydgasghasjkdfjk',
-    },
-  ];
-
-  addNewEmployee(employee: IEmployeeDetails) {
-    this.employees.push(employee);
+  employees: any;
+  constructor(public ob: HrdbservicesService) {
+    ob.GetAllEmployee().subscribe((res) => (this.employees = res));
   }
 
-  deleteEmployee(employee: IEmployeeDetails) {
-    this.employees.filter((emp: IEmployeeDetails): any => {
-      if (emp.ID !== employee.ID) {
-        return employee;
-      }
-    });
-  }
-
-  constructor() {}
-
+  result: any;
   ngOnInit(): void {}
 
-  addEmployee(f: any) {}
+  addEmployee(frm: any) {
+    this.ob
+      .AddEmployee(frm)
+      .subscribe(
+        (res) =>
+          (this.result =
+            res > 0
+              ? 'New Employee Created Successfully'
+              : 'Error Occured Please Try Again')
+      );
+  }
 }
