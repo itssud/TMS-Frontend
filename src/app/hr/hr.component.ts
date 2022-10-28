@@ -51,4 +51,6 @@ export class HrComponent implements OnInit {
   constructor() {}
 
   ngOnInit(): void {}
+
+  addEmployee(f: any) {}
 }

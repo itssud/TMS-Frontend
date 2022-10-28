@@ -3,27 +3,153 @@
 <app-header></app-header>
 
 <div class="hero min-h-[calc(100vh-15.5vh)] bg-base-200 overflow-x-auto">
-  <div class="drawer drawer-mobile h-full">
-    <input id="my-drawer-2" type="checkbox" class="drawer-toggle" />
-    <div class="drawer-content flex flex-col items-center justify-center">
-      <!-- Page content here -->
-      <label for="my-drawer-2" class="btn btn-primary drawer-button lg:hidden"
-        >Open drawer</label
-      >
-    </div>
-    <div class="drawer-side">
-      <label for="my-drawer-2" class="drawer-overlay"></label>
-      <ul class="menu p-4 overflow-y-auto w-50 bg-base-100 text-base-content">
-        <!-- Sidebar content here -->
-        <li><a>Employee Details</a></li>
-        <li><a>Training Details</a></li>
-      </ul>
-    </div>
-  </div>
   <div class="overflow-x h-full">
     <div class="w-full flex justify-between align-middle mt-16 mb-5">
       <h5 class="text-lg font-bold">Employee Details</h5>
-      <button class="btn btn-primary btn-xs mr-5">Add New</button>
+      <!-- <button class="btn btn-primary btn-xs mr-5">Add New</button> -->
+      <!-- The button to open modal -->
+      <label for="my-modal-3" class="btn btn-primary btn-xs mr-5 modal-button"
+        >Add New</label
+      >
+
+      <!-- Put this part before </body> tag -->
+      <input type="checkbox" id="my-modal-3" class="modal-toggle" />
+      <div class="modal">
+        <div class="modal-box relative">
+          <label
+            for="my-modal-3"
+            class="btn btn-sm btn-circle absolute right-2 top-2"
+            >✕</label
+          >
+          <h3 class="text-lg font-bold">New Employee Details</h3>
+          {{ newEmployeeFrm.value | json }}
+          <form
+            class="card flex-shrink-0 w-full max-w-sm bg-base-100"
+            #newEmployeeFrm="ngForm"
+            (submit)="addEmployee(newEmployeeFrm.value)"
+          >
+            <div class="card-body">
+              <div class="form-control">
+                <label class="label">
+                  <span class="label-text">Name</span>
+                </label>
+                <input
+                  type="text"
+                  placeholder="name"
+                  name="name"
+                  #ename="ngModel"
+                  ngModel
+                  class="input input-bordered"
+                  required
+                />
+                <p
+                  class="text-sm text-red-600 ml-5 mt-1"
+                  *ngIf="ename.errors?.['required'] && ename.touched"
+                >
+                  Invalid Employee Name
+                </p>
+              </div>
+              <div class="form-control">
+                <label class="label">
+                  <span class="label-text">Designation</span>
+                </label>
+                <input
+                  type="text"
+                  placeholder="designation"
+                  name="designation"
+                  #designation="ngModel"
+                  ngModel
+                  class="input input-bordered"
+                  required
+                />
+                <p
+                  class="text-sm text-red-600 ml-5 mt-1"
+                  *ngIf="designation.errors?.['required'] && designation.touched"
+                >
+                  Invalid Employee Designation
+                </p>
+              </div>
+              <!-- <div class="form-control">
+                <label class="label">
+                  <span class="label-text">Manager ID</span>
+                </label>
+                <input
+                  type="text"
+                  placeholder="manager id"
+                  name="manager"
+                  #manager="ngModel"
+                  ngModel
+                  class="input input-bordered"
+                  required
+                />
+                <p
+                  class="text-sm text-red-600 ml-5 mt-1"
+                  *ngIf="manager.errors?.['required'] && manager.touched"
+                >
+                  Invalid Employee Designation
+                </p>
+              </div> -->
+              <div class="form-control w-full max-w-xs">
+                <label class="label">
+                  <span class="label-text">Manager ID</span>
+                </label>
+                <select class="select select-bordered" ngModel name="managerId">
+                  <option disabled selected>Pick Manager ID</option>
+                  <option [value]="2">Joman</option>
+                  <option [value]="3">Ravi Kumar</option>
+                  <option [value]="4">Rakesh</option>
+                </select>
+              </div>
+              <div class="form-control">
+                <label class="label">
+                  <span class="label-text">Email</span>
+                </label>
+                <input
+                  type="text"
+                  placeholder="email"
+                  name="email"
+                  #username="ngModel"
+                  ngModel
+                  class="input input-bordered"
+                  required
+                />
+                <p
+                  class="text-sm text-red-600 ml-5 mt-1"
+                  *ngIf="username.errors?.['required'] && username.touched"
+                >
+                  Invalid username
+                </p>
+              </div>
+
+              <div class="form-control">
+                <label class="label">
+                  <span class="label-text">Password</span>
+                </label>
+                <input
+                  type="text"
+                  placeholder="password"
+                  class="input input-bordered"
+                  name="password"
+                  ngModel
+                  #password="ngModel"
+                  placeholder="Password"
+                  required
+                />
+                <p
+                  class="text-sm text-red-600 ml-5 mt-1"
+                  *ngIf="password.errors?.['required'] && password.touched"
+                >
+                  Invalid password
+                </p>
+              </div>
+              <div class="form-control mt-6">
+                <button type="submit" class="btn btn-primary">Add</button>
+                <label for="my-modal-3" class="btn btn-danger">Close</label>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
     </div>
 
     <table class="table w-250">

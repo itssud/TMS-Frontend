@@ -12,10 +12,21 @@ import { HrComponent } from './hr/hr.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
-  declarations: [AppComponent, LoginComponent, MasterComponent, HomeComponent, EmployeeComponent, HrComponent, HeaderComponent, FooterComponent, SidebarComponent],
-  imports: [BrowserModule, AppRoutingModule, FormsModule],
+  declarations: [
+    AppComponent,
+    LoginComponent,
+    MasterComponent,
+    HomeComponent,
+    EmployeeComponent,
+    HrComponent,
+    HeaderComponent,
+    FooterComponent,
+    SidebarComponent,
+  ],
+  imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
   providers: [],
   bootstrap: [MasterComponent],
 })
