@@ -5,10 +5,12 @@ import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root',
 })
-export class DbservicesService {
+export class LoginservicesService {
   constructor(public ob: HttpClient) {}
 
   ValidateCredentials(cred: any): Observable<any> {
-    return this.ob.post<any>('https://localhost:7239/api/Login', cred);
+    return this.ob.post<any>('https://localhost:7239/api/Login', cred, {
+      responseType: 'text' as 'json',
+    });
   }
 }

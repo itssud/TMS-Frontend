@@ -18,4 +18,14 @@ export class HrdbservicesService {
   GetAllEmployee(): Observable<any[]> {
     return this.ob.get<any[]>('https://localhost:7239/api/displayAllEmployees');
   }
+  GetAllTraining(): Observable<any[]> {
+    return this.ob.get<any[]>('https://localhost:7239/api/displayTraining');
+  }
+
+  AddTraining(training: any): Observable<number> {
+    return this.ob.post<number>(
+      'https://localhost:7239/api/insertTraining',
+      training
+    );
+  }
 }

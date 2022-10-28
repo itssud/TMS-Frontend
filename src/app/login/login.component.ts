@@ -1,22 +1,28 @@
 import { Component, OnInit } from '@angular/core';
-
-declare interface ICredentials {
-  email: string;
-  password: string;
-}
+import { LoginservicesService } from '../loginservices.service';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss'],
+  providers: [LoginservicesService],
 })
 export class LoginComponent implements OnInit {
-  login(credentials: ICredentials) {
-    // alert(JSON.stringify(credentials));
-    window.location.href = '/home';
-  }
-
-  constructor() {}
+  constructor(public ob: LoginservicesService) {}
 
   ngOnInit(): void {}
+  login(credentials: any) {
+    // alert(JSON.stringify(credentials));
+    this.ob.ValidateCredentials(credentials).subscribe(
+      (res: any) => {
+        console.log('Success', res);
+        sessionStorage.setItem('email', credentials.Email);
+        sessionStorage.setItem('userType', res);
+        window.location.href = '/home';
+      },
+      (err: any) => {
+        console.log('Error', err);
+      }
+    );
+  }
 }

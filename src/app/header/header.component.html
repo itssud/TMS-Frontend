@@ -3,7 +3,7 @@
     <a class="btn btn-ghost normal-case text-xl">TMS</a>
   </div>
   <div class="flex-1 justify-center">
-    <a class="normal-case text-lg">HR Portal</a>
+    <a class="normal-case text-lg">{{ session_userType }} Portal</a>
   </div>
 
   <div class="flex gap-3">
@@ -41,7 +41,7 @@
         </div>
       </div>
     </div>
-    <span>Sudarshan S</span>
+    <span>{{ session_email }}</span>
     <div class="dropdown dropdown-end">
       <label tabindex="0" class="btn btn-ghost btn-circle avatar">
         <div class="w-10 rounded-full">

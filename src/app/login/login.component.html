@@ -20,8 +20,9 @@
           </label>
           <input
             type="text"
+            pattern="^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$"
             placeholder="email"
-            name="email"
+            name="Email"
             #username="ngModel"
             ngModel
             class="input input-bordered"
@@ -32,6 +33,12 @@
             *ngIf="username.errors?.['required'] && username.touched"
           >
             Invalid username
+          </p>
+          <p
+            class="text-sm text-red-600 ml-5 mt-1"
+            *ngIf="username.errors?.['pattern'] && username.touched"
+          >
+            Invalid email id
           </p>
         </div>
 
@@ -47,7 +54,7 @@
             ngModel
             #password="ngModel"
             placeholder="Password"
-            pattern="[0-9a-zA-Z]{7,}"
+            pattern="[0-9a-zA-Z]{3,}"
             required
           />
           <p
@@ -60,7 +67,7 @@
             class="text-sm text-red-600 ml-5 mt-1"
             *ngIf="password.errors?.['pattern'] && password.touched"
           >
-            Minimum 7 characters are required
+            Minimum 3 characters are required
           </p>
           <label class="label">
             <a href="#" class="label-text-alt link link-hover"
