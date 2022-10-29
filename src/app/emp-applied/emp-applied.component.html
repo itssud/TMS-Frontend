@@ -2,31 +2,30 @@
   <div class="w-full flex justify-between align-middle mt-16 mb-5">
     <h5 class="text-lg font-bold">Training Details</h5>
   </div>
-  {{ trainings | json }}
+
   <table class="table w-250">
     <!-- head -->
     <thead>
       <tr>
-        <th>Training Topic</th>
-        <th>description</th>
-        <th>Start Date</th>
-        <th>End Date</th>
+        <th>Training ID</th>
+        <th>Status</th>
+        <th>Message</th>
       </tr>
     </thead>
     <tbody>
       <!-- row 1 -->
       <tr *ngFor="let training of trainings">
-        <td>
+        <!-- <td>
           <div class="flex items-center space-x-3">
             <div>
               <div class="font-bold">{{ training.topic }}</div>
               <div class="text-sm opacity-50">TRN{{ training.id }}</div>
             </div>
           </div>
-        </td>
-        <td>{{ training.description }}</td>
-        <td>{{ training.startDate }}</td>
-        <td>{{ training.endDate }}</td>
+        </td> -->
+        <td>{{ training.trainingId }}</td>
+        <td>{{ training.status }}</td>
+        <td>{{ training.message }}</td>
       </tr>
     </tbody>
   </table>
