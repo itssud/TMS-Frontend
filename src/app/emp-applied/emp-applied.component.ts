@@ -18,13 +18,13 @@ export class EmpAppliedComponent implements OnInit {
         this.trainings = r.filter((b) =>
           res.map((a) => a.trainingId).includes(b.id)
         );
-      });
 
-      this.trainings = this.trainings.map((train: any) => {
-        this.appliedTrainings.forEach((at) => {
-          if (at.trainingId === train.id) {
-            return { ...train, status: at.status, message: at.message };
-          }
+        this.trainings = this.trainings.map((train: any) => {
+          res.forEach((at) => {
+            if (at.trainingId === train.id) {
+              return { ...train, status: at.status, message: at.message };
+            }
+          });
         });
       });
     });
