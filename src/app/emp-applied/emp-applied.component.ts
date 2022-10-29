@@ -10,21 +10,20 @@ import { HrdbservicesService } from '../hrdbservices.service';
 })
 export class EmpAppliedComponent implements OnInit {
   trainings: any;
-  appliedTrainings: any;
+  appliedTrainings: any[] = [];
   constructor(public ob: EmployeeservicesService, ob1: HrdbservicesService) {
     ob1.GetAllTraining().subscribe((r) => {
       ob.GetAppliedTrainings().subscribe((res) => {
-        this.trainings = r.filter((b) => {
-          if (res.map((a) => a.trainingId).includes(b.id)) {
-            res.forEach((ma) => {
-              if (ma.trainingId === b.id) {
-                return {
-                  ...b,
-                  status: ma.status,
-                  message: ma.message,
-                };
-              }
-            });
+        this.appliedTrainings = res;
+        this.trainings = r.filter((b) =>
+          res.map((a) => a.trainingId).includes(b.id)
+        );
+      });
+
+      this.trainings = this.trainings.map((train: any) => {
+        this.appliedTrainings.forEach((at) => {
+          if (at.trainingId === train.id) {
+            return { ...train, status: at.status, message: at.message };
           }
         });
       });
