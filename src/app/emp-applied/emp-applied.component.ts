@@ -14,19 +14,9 @@ export class EmpAppliedComponent implements OnInit {
   constructor(public ob: EmployeeservicesService, ob1: HrdbservicesService) {
     ob1.GetAllTraining().subscribe((r) => {
       ob.GetAppliedTrainings().subscribe((res) => {
-        this.trainings = r.filter((b) => {
-          if (res.map((a) => a.trainingId).includes(b.id)) {
-            res.forEach((ma) => {
-              if (ma.trainingId === b.id) {
-                return {
-                  ...b,
-                  status: ma.status,
-                  message: ma.message,
-                };
-              }
-            });
-          }
-        });
+        this.trainings = r.filter((b) =>
+          res.map((a) => a.trainingId).includes(b.id)
+        );
       });
     });
   }
