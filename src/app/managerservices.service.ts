@@ -10,7 +10,7 @@ export class ManagerservicesService {
 
   GetAllEmployeeAppliedTrainingOfManager(): Observable<any[]> {
     return this.ob.get<any[]>(
-      'https://localhost:7239/api/displaybymanager?id=' +
+      'https://localhost:7239/api/displaybymanager?Id=' +
         JSON.parse(sessionStorage.getItem('empInfo') as string)[0]['id']
     );
   }
