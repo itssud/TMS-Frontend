@@ -1,16 +1,24 @@
 import { Component, OnInit } from '@angular/core';
 import { EmployeeservicesService } from '../employeeservices.service';
+import { HrdbservicesService } from '../hrdbservices.service';
 
 @Component({
   selector: 'app-emp-applied',
   templateUrl: './emp-applied.component.html',
   styleUrls: ['./emp-applied.component.scss'],
-  providers: [EmployeeservicesService],
+  providers: [EmployeeservicesService, HrdbservicesService],
 })
 export class EmpAppliedComponent implements OnInit {
   trainings: any;
-  constructor(public ob: EmployeeservicesService) {
-    ob.GetAppliedTrainings().subscribe((res) => (this.trainings = res));
+  appliedTrainings: any;
+  constructor(public ob: EmployeeservicesService, ob1: HrdbservicesService) {
+    ob1.GetAllTraining().subscribe((r) => {
+      ob.GetAppliedTrainings().subscribe((res) => {
+        this.trainings = r.filter((b) =>
+          res.map((a) => a.trainingId).includes(b.id)
+        );
+      });
+    });
   }
 
   ngOnInit(): void {}
