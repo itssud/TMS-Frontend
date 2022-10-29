@@ -13,4 +13,13 @@ export class LoginservicesService {
       responseType: 'text' as 'json',
     });
   }
+
+  GetEmployeeDetails(Email: string, type: string): Observable<any> {
+    return this.ob.get<any>(
+      'https://localhost:7239/api/getEmployeeinfo?Email=' +
+        Email +
+        '&type=' +
+        type
+    );
+  }
 }

@@ -1,1 +1,7 @@
-<app-hr></app-hr>
+<app-header></app-header>
+<div [ngSwitch]="session_userType">
+  <app-hr *ngSwitchCase="'HR'"></app-hr>
+  <app-manager *ngSwitchCase="'Manager'"></app-manager>
+  <app-employee *ngSwitchCase="'Employee'"></app-employee>
+</div>
+<app-footer></app-footer>

@@ -2,16 +2,15 @@
   <div class="w-48">
     <ul class="menu overflow-y-auto bg-base-100 text-base-content">
       <!-- Sidebar content here -->
-      <li><a (click)="pageChanger('Training')">Training Details</a></li>
       <li><a (click)="pageChanger('Applied')">Applied Training</a></li>
+      <li><a (click)="pageChanger('Employee')">Employee Details</a></li>
     </ul>
   </div>
   <div
     class="hero min-h-[calc(100vh-15.5vh)] bg-base-200 overflow-x-auto"
     [ngSwitch]="page"
   >
-    <app-emp-training *ngSwitchCase="'Training'"></app-emp-training>
-    <app-emp-applied *ngSwitchCase="'Applied'"></app-emp-applied>
-    <!-- <router-outlet></router-outlet> -->
+    <app-manager-employee *ngSwitchCase="'Employee'"></app-manager-employee>
+    <app-manager-applied *ngSwitchCase="'Applied'"></app-manager-applied>
   </div>
 </div>

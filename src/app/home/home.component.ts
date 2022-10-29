@@ -9,6 +9,7 @@ import { HrdbservicesService } from '../hrdbservices.service';
 })
 export class HomeComponent implements OnInit {
   employees: any;
+  session_userType = sessionStorage.getItem('userType');
   constructor(public ob: HrdbservicesService) {
     ob.GetAllEmployee().subscribe((res) => (this.employees = res));
   }

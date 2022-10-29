@@ -16,6 +16,11 @@ import { HttpClientModule } from '@angular/common/http';
 import { HrEmployeeComponent } from './hr-employee/hr-employee.component';
 import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
 import { HrTrainingComponent } from './hr-training/hr-training.component';
+import { ManagerComponent } from './manager/manager.component';
+import { EmpTrainingComponent } from './emp-training/emp-training.component';
+import { EmpAppliedComponent } from './emp-applied/emp-applied.component';
+import { ManagerEmployeeComponent } from './manager-employee/manager-employee.component';
+import { ManagerAppliedComponent } from './manager-applied/manager-applied.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +36,11 @@ import { HrTrainingComponent } from './hr-training/hr-training.component';
     HrEmployeeComponent,
     PagenotfoundComponent,
     HrTrainingComponent,
+    ManagerComponent,
+    EmpTrainingComponent,
+    EmpAppliedComponent,
+    ManagerEmployeeComponent,
+    ManagerAppliedComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
   providers: [],

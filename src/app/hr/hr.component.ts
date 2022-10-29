@@ -10,6 +10,12 @@ import { HrdbservicesService } from '../hrdbservices.service';
 })
 export class HrComponent implements OnInit {
   employees: any;
+
+  page: string = 'Employee';
+
+  pageChanger(pageName: string) {
+    this.page = pageName;
+  }
   constructor(public ob: HrdbservicesService) {
     ob.GetAllEmployee().subscribe((res) => (this.employees = res));
   }

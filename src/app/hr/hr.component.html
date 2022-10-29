@@ -1,18 +1,19 @@
 <!-- <app-employee></app-employee> <app-hr></app-hr> -->
 
-<app-header></app-header>
 <div class="flex">
   <div class="w-48">
     <ul class="menu overflow-y-auto bg-base-100 text-base-content">
       <!-- Sidebar content here -->
-      <li><a routerLink="/home">Employee Details</a></li>
-      <li><a routerLink="training">Training Details</a></li>
+      <li><a (click)="pageChanger('Employee')">Employee Details</a></li>
+      <li><a (click)="pageChanger('Training')">Training Details</a></li>
     </ul>
   </div>
-  <div class="hero min-h-[calc(100vh-15.5vh)] bg-base-200 overflow-x-auto">
-    <!-- <app-hr-employee></app-hr-employee> -->
-    <router-outlet></router-outlet>
+  <div
+    class="hero min-h-[calc(100vh-15.5vh)] bg-base-200 overflow-x-auto"
+    [ngSwitch]="page"
+  >
+    <app-hr-employee *ngSwitchCase="'Employee'"></app-hr-employee>
+    <app-hr-training *ngSwitchCase="'Training'"></app-hr-training>
+    <!-- <router-outlet></router-outlet> -->
   </div>
 </div>
-
-<app-footer></app-footer>

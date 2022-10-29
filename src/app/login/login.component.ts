@@ -8,6 +8,7 @@ import { LoginservicesService } from '../loginservices.service';
   providers: [LoginservicesService],
 })
 export class LoginComponent implements OnInit {
+  empInfo: any;
   constructor(public ob: LoginservicesService) {}
 
   ngOnInit(): void {}
@@ -15,10 +16,16 @@ export class LoginComponent implements OnInit {
     // alert(JSON.stringify(credentials));
     this.ob.ValidateCredentials(credentials).subscribe(
       (res: any) => {
-        console.log('Success', res);
-        sessionStorage.setItem('email', credentials.Email);
-        sessionStorage.setItem('userType', res);
-        window.location.href = '/home';
+        this.ob
+          .GetEmployeeDetails(credentials.Email, res)
+          .subscribe((Empres: any) => {
+            this.empInfo = Empres;
+            sessionStorage.setItem('empInfo', JSON.stringify(this.empInfo));
+            sessionStorage.setItem('email', credentials.Email);
+            sessionStorage.setItem('userType', res);
+
+            window.location.href = '/home';
+          });
       },
       (err: any) => {
         console.log('Error', err);

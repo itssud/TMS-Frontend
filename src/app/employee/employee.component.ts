@@ -15,14 +15,11 @@ export declare interface IEmployeeDetails {
   styleUrls: ['./employee.component.scss'],
 })
 export class EmployeeComponent implements OnInit {
-  details: IEmployeeDetails = {
-    ID: 2313,
-    Name: 'Keerti Raju',
-    Designation: '.Net Guru',
-    ManagerID: 23344,
-    Email: 'rajugaru@yti.com',
-    Password: 'aydgasghasjkdfjk',
-  };
+  page: string = 'Training';
+
+  pageChanger(pageName: string) {
+    this.page = pageName;
+  }
 
   constructor() {}
 
