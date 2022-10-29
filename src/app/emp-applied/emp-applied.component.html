@@ -10,6 +10,7 @@
         <th>Training ID</th>
         <th>Status</th>
         <th>Message</th>
+        <th>Feedback</th>
       </tr>
     </thead>
     <tbody>
@@ -26,6 +27,40 @@
         <td>{{ training.trainingId }}</td>
         <td>{{ training.status }}</td>
         <td>{{ training.message }}</td>
+        <td>
+          <div class="rating">
+            <input
+              type="radio"
+              name="rating-2"
+              [value]="1"
+              class="mask mask-star-2 bg-orange-400"
+            />
+            <input
+              type="radio"
+              name="rating-2"
+              [value]="2"
+              class="mask mask-star-2 bg-orange-400"
+            />
+            <input
+              type="radio"
+              name="rating-2"
+              [value]="3"
+              class="mask mask-star-2 bg-orange-400"
+            />
+            <input
+              type="radio"
+              name="rating-2"
+              [value]="4"
+              class="mask mask-star-2 bg-orange-400"
+            />
+            <input
+              type="radio"
+              name="rating-2"
+              [value]="5"
+              class="mask mask-star-2 bg-orange-400"
+            />
+          </div>
+        </td>
       </tr>
     </tbody>
   </table>
