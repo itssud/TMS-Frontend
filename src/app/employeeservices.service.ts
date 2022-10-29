@@ -14,4 +14,11 @@ export class EmployeeservicesService {
       training
     );
   }
+
+  GetAppliedTrainings(): Observable<any[]> {
+    return this.ob.get<any[]>(
+      'https://localhost:7239/api/displayTrainingbyid?id=' +
+        JSON.parse(sessionStorage.getItem('empInfo') as string)[0]['id']
+    );
+  }
 }
